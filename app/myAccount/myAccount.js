@@ -48,24 +48,26 @@ angular.module('stockTracker.myAccount', ['ngRoute']).
 
     .factory('MyStocksService', ['MyBalanceService', function(MyBalanceService) {
         var vm = this;
-        //vm.myStockList = {};
-        vm.myStockList = {"YHOO":{"change":"-0.450001","chg_percent":"-1.203532","day_high":"37.439899","day_low":"36.810001","issuer_name":"Yahoo! Inc.","issuer_name_lang":"Yahoo! Inc.","name":"Yahoo! Inc.","price":"36.939999","symbol":"YHOO","ts":"1466193600","type":"equity","utctime":"2016-06-17T20:00:00+0000","volume":"12593900","year_high":"41.390000","year_low":"26.150000","quantity":0},"GOOG":{"change":"-18.640015","chg_percent":"-2.624024","day_high":"708.820007","day_low":"688.451477","issuer_name":"Alphabet Inc.","issuer_name_lang":"Alphabet Inc.","name":"Alphabet Inc.","price":"691.719971","symbol":"GOOG","ts":"1466193600","type":"equity","utctime":"2016-06-17T20:00:00+0000","volume":"3402357","year_high":"789.870000","year_low":"515.180000","quantity":0}};
+
+        vm.myStockList = {};
+        //Test Data
+        //vm.myStockList = {"YHOO":{"change":"-0.450001","chg_percent":"-1.203532","day_high":"37.439899","day_low":"36.810001","issuer_name":"Yahoo! Inc.","issuer_name_lang":"Yahoo! Inc.","name":"Yahoo! Inc.","price":"36.939999","symbol":"YHOO","ts":"1466193600","type":"equity","utctime":"2016-06-17T20:00:00+0000","volume":"12593900","year_high":"41.390000","year_low":"26.150000","quantity":0},"GOOG":{"change":"-18.640015","chg_percent":"-2.624024","day_high":"708.820007","day_low":"688.451477","issuer_name":"Alphabet Inc.","issuer_name_lang":"Alphabet Inc.","name":"Alphabet Inc.","price":"691.719971","symbol":"GOOG","ts":"1466193600","type":"equity","utctime":"2016-06-17T20:00:00+0000","volume":"3402357","year_high":"789.870000","year_low":"515.180000","quantity":0}};
 
         return {
             add: function(stock) {
                 stock.quantity = 0;
                 vm.myStockList[stock.symbol] = stock;
                 //console.log(JSON.stringify(vm.myStockList));
-                console.log(stock.symbol +' added.')
+                console.log(stock.symbol +' added.');
             },
 
             remove: function(stock) {
                 delete vm.myStockList[stock.symbol];
-                console.log(stock.symbol +' removed.')
+                console.log(stock.symbol +' removed.');
             },
 
             getMyStockList: function() {
-              return Object.keys(vm.myStockList).map(function (key) {return vm.myStockList[key]});;
+              return Object.keys(vm.myStockList).map(function (key) {return vm.myStockList[key]; });
             },
 
             buy: function(quantity, stock) {
@@ -97,7 +99,7 @@ angular.module('stockTracker.myAccount', ['ngRoute']).
                 //vm.myStocks.splice(stock);
 
             }
-        }
+        };
     }])
     .factory('MyBalanceService', ['APP_PROPS', function(APP_PROPS) {
         var vm = this;
@@ -139,5 +141,5 @@ angular.module('stockTracker.myAccount', ['ngRoute']).
                 console.log(amount);
             }
 
-        }
+        };
     }]);
