@@ -1,5 +1,11 @@
 /* app css stylesheet */
 
+body {
+  margin: 0 auto;
+  width: 80%;
+}
+
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;

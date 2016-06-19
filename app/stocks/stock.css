@@ -1,0 +1,8 @@
+.stocks form #searchStockTxt {
+    width: 88%;
+}
+
+.stocks form .button {
+    /*width: 20%;*/
+    float: right;
+}

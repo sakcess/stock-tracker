@@ -1,6 +1,54 @@
 <!-- <p>This is the partial for My Account.</p> -->
 <div class="myAccount">
 
-<p class="balance"> <strong> Balance: </strong> ${{vm.balance}}</p>
+    <div class="balance"><strong> Balance: </strong> ${{vm.balance}}</div>
+
+    <br/>
+
+    <section>
+        <h1>Manage Amount</h1>
+        <p>
+            <label for="amount">Amount </label>
+            <input id="amount" ng-model="vm.amount" type="text">
+        </p>
+
+        <p>
+            <button ng-click="vm.deposit(vm.amount)">Deposit</button>
+            <button ng-click="vm.withdraw(vm.amount)">Withdraw</button>
+        </p>
+
+    </section>
+
+    <br/>
+
+    <section>
+        <h1>My Stocks</h1>
+        <table class="tftable" border="1" ng-if="vm.stocksList.length > 0">
+            <tr>
+                <th>Stock</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Change</th>
+                <th>Buy</th>
+                <th>Sell</th>
+
+            </tr>
+
+            <tr ng-repeat="stock in vm.stocksList">
+                <td width="30%">{{stock.symbol}}</td>
+                <td width="20%">{{stock.quantity}}</td>
+                <td width="20%">{{stock.price}}</td>
+                <td width="20%">{{stock.change}}</td>
+                <td width="20%">
+                    <input type="text" ng-model="vm.buyQuantity[stock.symbol]">
+                    <button ng-click="vm.buyStocks(vm.buyQuantity[stock.symbol], stock)">Buy</button>
+                </td>
+                <td>
+                    <input type="text" ng-model="vm.sellQuantity[stock.symbol]">
+                    <button ng-click="vm.sellStocks(vm.sellQuantity[stock.symbol], stock)">Sell</button>
+                </td>
+            </tr>
+        </table>
+    </section>
 
 </div>

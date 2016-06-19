@@ -5,10 +5,45 @@
 </p>
  -->
 
- <div class="stocks">
+<div class="stocks">
 
-    <form action="">
-      <input type="text">
+    <form ng-submit="vm.searchStock(vm.searchStockTxt)">
+        <div>
+            <input id="searchStockTxt" ng-model="vm.searchStockTxt" type="text"
+                   autocomplete="off"
+                   placeholder="Search a single stock or multiple stocks by ticker name... Example: YHOO,AAPL"/>
+            <input type="submit" name="search" id="search" value="Search">
+        </div>
     </form>
 
- </div>
+    <hr>
+
+    <section>
+        <table class="tftable" border="1" ng-if="vm.stockData.length > 0">
+            <tr>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Day High</th>
+                <th>Day Low</th>
+                <th>Change</th>
+                <th>Add</th>
+                <th>Remove</th>
+            </tr>
+            <tr ng-repeat="stock in vm.stockData">
+
+                <td width="30%">{{stock.resource.fields.issuer_name}}</td>
+                <td width="10%">{{stock.resource.fields.price}}</td>
+                <td width="10%">{{stock.resource.fields.day_high}}</td>
+                <td width="10%">{{stock.resource.fields.day_low}}</td>
+                <td width="10%">{{stock.resource.fields.change}}</td>
+                <td width="10%">
+                    <button ng-click="vm.addStockToMyAccount(stock.resource.fields)">Add</button>
+                </td>
+                <td width="10%">
+                    <button ng-click="vm.removeStockFromMyAccount(stock.resource.fields)">Remove</button>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+</div>
