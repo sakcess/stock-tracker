@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('myApp.version', [
-  'myApp.version.interpolate-filter',
-  'myApp.version.version-directive'
+angular.module('stockTracker.version', [
+  'stockTracker.version.interpolate-filter',
+  'stockTracker.version.version-directive'
 ])
 
 .value('version', '0.1');
